@@ -14,5 +14,5 @@ var runningSum = function(input) {
         }
         output[i] = total;
     }
-    return total;
+    return output;
 };
