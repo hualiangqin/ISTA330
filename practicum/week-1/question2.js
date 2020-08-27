@@ -14,5 +14,5 @@ var canGetEqualCookies = function(cookies, extraCookies) {
         for (i=0; i<cookies.length; i++){
                 totalCookies += cookies[i];
         }
-        return (totalCookies/cookies.length) === 0;
+        return (totalCookies%cookies.length) === 0;
 };
