@@ -9,5 +9,5 @@ There are 5 ordered pairs: (4, 6), (4, 9), (2, 6), (2, 9)
 */
 
 var numberOfOrderedPairs = function(input) {
-
+    
 };
