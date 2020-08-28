@@ -8,5 +8,15 @@ output: [1, 0, 1, 2]
 */
 
 var biggerAndEven = function(input) {
-
+    let output = []
+    for (i=0; i<input.length; i++){
+        let total = 0;
+        for (j=0; j<input.length; j++){
+            if (input[j] > input[i] && input[j]%2 === 0){
+                total++;
+            }
+        }
+        output[i] = total;
+    }
+    return output;
 };

@@ -9,5 +9,13 @@ output: 'hello'
 */
 
 var suffleString = function(input, shuffleIndices) {
-
+    let array = [];
+    for (i=0; i<shuffleIndices.length; i++){
+        array[shuffleIndices[i]] = input.charAt(i);
+    }
+    let string = "";
+    for (i=0; i<array.length; i++){
+        string += array[i]
+    }
+    return string;
 };
