@@ -29,10 +29,7 @@ var sort = function(input) {
            output.push(min);
            input.splice(index, 1);
            min = input[0];
+           index = 0;
     }
     return output;
 };
-
-let input = [1, 2, 2, 3, 4, 7, 9];
-let output = median(input);
-console.log(output);

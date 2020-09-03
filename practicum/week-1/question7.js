@@ -34,6 +34,7 @@ var sort = function(input) {
               output.push(min);
               input.splice(index, 1);
               min = input[0];
+              index = 0;
        }
        return output;
 };
