@@ -25,5 +25,3 @@ var minimalReduction = function(n) {
     }
     return steps;
 };
-
-console.log('hi');
