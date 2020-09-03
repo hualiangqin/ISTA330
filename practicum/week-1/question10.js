@@ -8,8 +8,8 @@ output: 7 - 2 = 5
 
 var maxMinusMin = function(n) {
     let str = n.toString().split("");
-    let str = sort(str);
-    return -Number(str[0] - str[str.length-1]);
+    let newstr = sort(str);
+    return -Number(newstr[0] - newstr[newstr.length-1]);
 };
 
 var sort = function(input) {

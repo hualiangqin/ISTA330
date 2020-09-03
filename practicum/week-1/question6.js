@@ -6,11 +6,11 @@ output: 3
 */
 
 var median = function(input) {
-    let input = sort(input);
-    if (input.length%2 === 0){
-        return (input[input.length/2 - 1] + input[input.length/2])/2
+    let sortedinput = sort(input);
+    if (sortedinput.length%2 === 0){
+        return (sortedinput[sortedinput.length/2 - 1] + sortedinput[sortedinput.length/2])/2
     }else{
-        return input[ (input.length-1) / 2]
+        return sortedinput[ (sortedinput.length-1) / 2]
     }
 };
 
@@ -32,3 +32,7 @@ var sort = function(input) {
     }
     return output;
 };
+
+let input = [1, 2, 2, 3, 4, 7, 9];
+let output = median(input);
+console.log(output);
