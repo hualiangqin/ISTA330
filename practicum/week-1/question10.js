@@ -8,6 +8,25 @@ output: 7 - 2 = 5
 
 var maxMinusMin = function(n) {
     let str = n.toString().split("");
-    str.sort(function(a, b){return a-b})
+    let str = sort(str);
     return -Number(str[0] - str[str.length-1]);
+};
+
+var sort = function(input) {
+    let output = [];
+    let min = input[0];
+    let index = 0;
+    let len = input.length;
+    while (output.length < len) {
+           for (i=0; i<input.length; i++){
+                  if (input[i] < min ){
+                         min = input[i];
+                         index = i;
+                  }
+           }
+           output.push(min);
+           input.splice(index, 1);
+           min = input[0];
+    }
+    return output;
 };
