@@ -13,5 +13,36 @@ so there are two groups with the largest size.
 */
 
 var largestGroupsCount = function(n) {
+    let map = new Map();
+    let largestSize = 1;
+    for (i=1; i<=n; i++){
+        
+        let sumOfDigits = 0;
+        if (i<10){
+            sumOfDigits = i;
+        }else{
+            let numStr = i.toString();
+            for (j=0; j<numStr.length; j++){
+                sumOfDigits += parseInt(numStr.charAt(j));
+            }
+        }
 
+        if (map.has(sumOfDigits)){
+            let value = map.get(sumOfDigits) + 1;
+            map.set(sumOfDigits, value);
+            if (value > largestSize){
+                largestSize = value;
+            }
+        }else{
+            map.set(sumOfDigits, 1);
+        }
+    }
+
+    let sum = 0;
+    for (let key of map.keys()){
+        if (map.get(key) == largestSize){
+            sum++;
+        }
+    }
+    return sum;
 };

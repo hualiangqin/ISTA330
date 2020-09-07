@@ -13,5 +13,20 @@ output: 3
 */
 
 var d_integer = function(input) {
-
+    let map = new Map();
+    for (i=0; i<input.length; i++){
+        if (map.has(input[i])){
+            let count = map.get(input[i]);
+            count++;
+            map.set(input[i], count);
+        }else{
+            map.set(input[i], 1);
+        }
+    }
+    for (let key of map.keys()){
+        if (map.get(key) == key){
+            return key;
+        }
+    }
+    return -1;
 };

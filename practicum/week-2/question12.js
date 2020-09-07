@@ -9,5 +9,19 @@ Given n, calculate F(n).
 */
 
 var F = function(n) {
-
+    if (n == 0){
+        return 0;
+    }else if(n == 1){
+        return 1;
+    }else if(n > 1){
+        return f(0, 1, n);
+    }
 };
+
+var f = function(n1, n2, n){
+    if (n == 0){
+        return n1;
+    }else{
+        return f(n2, n1+n2, n-1);
+    }
+}
