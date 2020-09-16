@@ -21,4 +21,3 @@ var productOfOthers = function(input) {
     return output;
 };
 
-console.log('hi');
