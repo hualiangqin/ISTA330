@@ -35,5 +35,27 @@ output: 4
 */
 
 var romanToInteger = function(s) {
-
+    let map = new Map([["I", 1], ["V", 5], ["X", 10], ["L", 50], ["C",100], ["D",500], ["M",1000]]);
+    let ints = [];
+    for (i=0; i<s.length; i++){
+        let char = s.charAt(i);
+        ints.push(map.get(char));
+    }
+    // reorganize the integer list
+    for (i=0; i<ints.length-1; i++){
+        if (ints[i] < ints[i+1]){
+            if ((ints[i] == 1 && (ints[i+1] == 5 || ints[i+1] == 10)) ||
+                (ints[i] == 10 && (ints[i+1] == 50 || ints[i+1] == 100)) ||
+                (ints[i] == 100 && (ints[i+1] == 500 || ints[i+1] == 1000))
+            ){
+                ints[i] = ints[i+1] - ints[i];
+                ints[i+1] = 0;
+            }
+        }
+    }
+    let result = 0;
+    for (i=0; i<ints.length; i++){
+        result+=ints[i];
+    }
+    return result;
 };

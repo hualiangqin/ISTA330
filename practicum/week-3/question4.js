@@ -19,5 +19,22 @@ Example:
 */
 
 var powerSet = function(input) {
+	let output = [];
+	
+	addPowerSet(input, input.length, output);
 
+	return output;
 };
+
+var addPowerSet = function(target, size, result){
+	let poWSize = Math.pow(2, size);
+	for (i=0; i<poWSize; i++){
+		let subSet = [];
+		for (j=0; j<size; j++){
+			if ((i & (1 << j)) > 0){
+				subSet.push(target[j]);
+			}
+		}
+		result.push(subSet);
+	}
+}

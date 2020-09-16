@@ -17,5 +17,28 @@ output: 7
 */
 
 var minPath = function(M) {
+	let rows = M.length;
+	let cols = M[0].length;
+	for (i=0; i<rows; i++){
+		for (j=0; j<cols; j++){
+			let hasUp = false;
+			let hasLeft = false;
+			
+			if(i-1 >= 0 && i-1 < rows){
+				hasLeft = true;
+			}
+			if(j-1 >= 0 && j-1 < cols){
+				hasUp = true;
+			}
 
+			if (hasUp && !hasLeft){
+				M[i][j] += M[i][j-1];
+			}else if (hasLeft && !hasUp){
+				M[i][j] += M[i-1][j];
+			}else if (hasUp && hasLeft){
+				M[i][j] += Math.min(M[i-1][j], M[i][j-1]);
+			}
+		}
+	}
+	return M[rows-1][cols-1];
 };
