@@ -34,8 +34,8 @@
        }
        let daffodil = new Flower('Daffodil', 'daffodil.png');
        let cherryblossom = new Flower('Cherry blossom', 'cherryblossom.png');
-       let lily = new Flower('Lily', 'lily.png');
-       let daisy = new Flower('Daisy', 'daisy.png');
+       let lily = new Flower('Lily', 'lily.jpg');
+       let daisy = new Flower('Daisy', 'daisy.jpg');
        let sunflower = new Flower('Sunflower', 'sunflower.png');
        let tulip = new Flower('Tulip', 'tulip.png');
        let rose = new Flower('Rose', 'rose.png');
@@ -53,31 +53,36 @@
        ];
 
         let flowersDiv = document.getElementById("flowersDiv");
+        let table = document.createElement("table");
         let pos = 0;
-        while (true){
+        while (pos<flowers.length){
             // each row will contains four flower div
-            let row = document.createElement("div");
+            let tr = document.createElement("tr");
             for (i=0; i<4; i++){
                 if (pos<flowers.length){
                     let flower = flowers[pos];
                     // create a div to contain flower picture and its name
                     let flowerDiv = document.createElement("div");
                     let flowerImg = document.createElement("img");
-                    flowerImg.src = flower.picture;
-                    let flowerName = document.createTextNode(flower.name);
+                    flowerImg.src = "images/" + flower.picture;
+                    let flowerName = document.createElement("p");
+                    flowerName.innerHTML = flower.name;
+                    // flowerName.style = "text-align:center";
                     // add flowerImg and flowerName to flowerDiv
                     flowerDiv.appendChild(flowerImg);
                     flowerDiv.appendChild(flowerName);
+                    flowerDiv.style = "text-align:center";
 
-                    row.appendChild(flowerDiv);
+                    let td = document.createElement("td");
+                    td.appendChild(flowerDiv);
+                    tr.appendChild(td);
 
                     pos++;
-                }else{
-                    break;
                 }
             }
-            flowersDiv.appendChild(row);
+            table.appendChild(tr);
         }
+        flowersDiv.append(table);
     </script>
 </body>
 </html>
