@@ -51,6 +51,33 @@
              rose,
              waterlily
        ];
+
+        let flowersDiv = document.getElementById("flowersDiv");
+        let pos = 0;
+        while (true){
+            // each row will contains four flower div
+            let row = document.createElement("div");
+            for (i=0; i<4; i++){
+                if (pos<flowers.length){
+                    let flower = flowers[pos];
+                    // create a div to contain flower picture and its name
+                    let flowerDiv = document.createElement("div");
+                    let flowerImg = document.createElement("img");
+                    flowerImg.src = flower.picture;
+                    let flowerName = document.createTextNode(flower.name);
+                    // add flowerImg and flowerName to flowerDiv
+                    flowerDiv.appendChild(flowerImg);
+                    flowerDiv.appendChild(flowerName);
+
+                    row.appendChild(flowerDiv);
+
+                    pos++;
+                }else{
+                    break;
+                }
+            }
+            flowersDiv.appendChild(row);
+        }
     </script>
 </body>
 </html>
