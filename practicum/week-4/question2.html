@@ -83,14 +83,14 @@
         }
         let daffodil = new Flower('Daffodil', 'daffodil.png');
         let cherryblossom = new Flower('Cherry blossom', 'cherryblossom.png');
-        let lily = new Flower('Lily', 'lily.png');
-        let daisy = new Flower('Daisy', 'daisy.png');
+        let lily = new Flower('Lily', 'lily.jpg');
+        let daisy = new Flower('Daisy', 'daisy.jpg');
         let sunflower = new Flower('Sunflower', 'sunflower.png');
         let tulip = new Flower('Tulip', 'tulip.png');
         let rose = new Flower('Rose', 'rose.png');
         let waterlily = new Flower('Water lily', 'waterlily.png');
 
-        let flowers = [
+        var flowers = [
             daffodil,
             cherryblossom,
             lily,
@@ -100,6 +100,68 @@
             rose,
             waterlily
         ];
+
+        var sortedFlowers = [];
+        var map = new Map();
+        for (i=0; i<flowers.length; i++){
+            sortedFlowers.push(flowers[i].name);
+            map.set(flowers[i].name, i);
+        }
+        sortedFlowers.sort();
+
+        let reorderFlower = function(name){
+            while (sortedFlowers[0] != name){
+                flower = sortedFlowers.shift();
+                sortedFlowers.push(flower);
+            }
+            let flowersDiv = document.getElementById("flowersDiv");
+            while (flowersDiv.firstChild){
+                flowersDiv.removeChild(flowersDiv.firstChild);
+            }
+            let flowersNewOrder = [];
+            for (let flowerName of sortedFlowers){
+                let i = map.get(flowerName);
+                flowersNewOrder.push(flowers[i]);
+            }
+            appendFlowers(flowersNewOrder);
+        }
+
+        let appendFlowers = function(flowers){
+            let flowersDiv = document.getElementById("flowersDiv");
+            let pos = 0;
+            while (pos<flowers.length){
+                // each row will contains four flower div
+                let row = document.createElement("div");
+                for (i=0; i<4; i++){
+                    if (pos<flowers.length){
+                        let flower = flowers[pos];
+                        // create a div to contain flower picture and its name
+                        let flowerDiv = document.createElement("div");
+                        let flowerImg = document.createElement("img");
+                        flowerImg.src = "images/" + flower.picture;
+                        flowerImg.onclick = function(){reorderFlower(flower.name)};
+                        let flowerName = document.createElement("p");
+                        flowerName.innerHTML = flower.name;
+                        
+                        // add flowerImg and flowerName to flowerDiv
+                        flowerDiv.appendChild(flowerImg);
+                        flowerDiv.appendChild(flowerName);
+                        flowerDiv.style = "text-align:center";
+                        flowerDiv.name = flowerName;
+
+                        row.appendChild(flowerDiv);
+
+                        pos++;
+                    }
+                }
+                row.style = "display: flex; justify-content: center; margin: auto;";
+                flowersDiv.appendChild(row);
+            }
+        };
+        
+        appendFlowers(flowers);
+
+
     </script>
 </body>
 

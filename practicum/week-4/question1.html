@@ -53,11 +53,10 @@
        ];
 
         let flowersDiv = document.getElementById("flowersDiv");
-        let table = document.createElement("table");
         let pos = 0;
         while (pos<flowers.length){
             // each row will contains four flower div
-            let tr = document.createElement("tr");
+            let row = document.createElement("div");
             for (i=0; i<4; i++){
                 if (pos<flowers.length){
                     let flower = flowers[pos];
@@ -67,22 +66,20 @@
                     flowerImg.src = "images/" + flower.picture;
                     let flowerName = document.createElement("p");
                     flowerName.innerHTML = flower.name;
-                    // flowerName.style = "text-align:center";
+                    
                     // add flowerImg and flowerName to flowerDiv
                     flowerDiv.appendChild(flowerImg);
                     flowerDiv.appendChild(flowerName);
                     flowerDiv.style = "text-align:center";
 
-                    let td = document.createElement("td");
-                    td.appendChild(flowerDiv);
-                    tr.appendChild(td);
+                    row.appendChild(flowerDiv);
 
                     pos++;
                 }
             }
-            table.appendChild(tr);
+            row.style = "display: flex; justify-content: center; margin: auto;";
+            flowersDiv.appendChild(row);
         }
-        flowersDiv.append(table);
     </script>
 </body>
 </html>
